@@ -1,0 +1,1 @@
+{:root "/home/devasia/workspace/clojure/saasweb/webmod", :context-path "webmod-7be16011-7b1b-46b1-9682-2ae083747591", :lein-profiles [:dev :test], :swank-port nil, :nrepl-port 7888}
