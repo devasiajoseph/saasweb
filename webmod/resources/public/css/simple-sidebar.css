@@ -119,3 +119,7 @@
 .site-table{
     width:500px;
 }
+
+.site-table tr{
+    cursor:pointer;
+}

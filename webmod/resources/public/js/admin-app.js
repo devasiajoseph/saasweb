@@ -11,39 +11,39 @@ angular.module('adminApp', []).
   }]);
 
 */
-var app = angular.module('adminApp', []);
+var app = angular.module('adminApp', ['ngResource']);
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
 	  when('/', {templateUrl: '/admin/dashboard', controller:PageCtrl}).
 	  when('/sites', {templateUrl: '/admin/sites', controller:SiteListCtrl}).
 	  when('/new-page', {templateUrl: '/admin/new-page', controller:NewCtrl}).
 	  when('/view-page', {templateUrl: '/admin/viewer', controller:PageCtrl}).
-	  when('/edit-site/:id', {templateUrl: '/admin/edit-site', controller:EditSiteCtrl}).
+	  when('/site-edit/:id', {templateUrl: '/admin/edit-site', controller:EditSiteCtrl}).
 	  otherwise({redirectTo: '/'});
   }]);
 
-app.factory('SiteListData', function(){
-    return [{"site_name":"devasia", "domain_name":"devasia.com"},
-	    {"site_name":"tintu", "domain_name":"tintu.com"},
-	    {"site_name":"papi", "domain_name":"papi.com"},
-	   ];
+app.factory('SiteListData', function($resource){
+    return $resource('/admin/site-list');
 });
 
-app.factory('SiteData', function(){
-    return {"site_name":"devasia", "domain_name":"devasia.com"}
-
+app.factory('SiteData', function($resource){
+    
+    return $resource('/admin/site-data');
 });
-function EditSiteCtrl($scope, $routeParams, SiteData){
-    console.log($routeParams.id);
-    $scope.site = SiteData;
-    $scope.saveSite = function(site){
-	console.log(site);
+function EditSiteCtrl($scope, $routeParams, $resource){
+    var siteData = $resource('/admin/site-data', {id:$routeParams.id});
+    var sites = siteData.query(function(){
+	$scope.site = sites[0];
+    });
+    $scope.saveSite=function(){
+	console.log($scope.site);
     }
     
 }
 
 function SiteListCtrl($scope, SiteListData){
-    $scope.siteList  = SiteListData;
+    console.log("site list")
+    $scope.siteList  = SiteListData.query();
 }
 
 
