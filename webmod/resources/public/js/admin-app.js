@@ -30,6 +30,11 @@ app.factory('SiteData', function($resource){
     
     return $resource('/admin/site-data');
 });
+
+app.directive('loader', function(scope, element, attributes){
+    
+});
+
 function EditSiteCtrl($scope, $routeParams, $resource){
     var siteData = $resource('/admin/site-data', {id:$routeParams.id});
     var sites = siteData.query(function(){
