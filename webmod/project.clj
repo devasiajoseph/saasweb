@@ -27,9 +27,10 @@
   :profiles
   {:production {:ring {:open-browser? false
                        :stacktraces?  false
-                       :auto-reload?  false}}
+                       :auto-reload?  true}}
    :dev {:dependencies [[ring-mock "0.1.5"]
-                        [ring/ring-devel "1.1.8"]]}}
+                        [ring/ring-devel "1.1.8"]
+                        [lein-ring "0.5.4"]]}}
   :min-lein-version "2.0.0"
   :immutant {:context-path "/"
              :nrepl-port 12345

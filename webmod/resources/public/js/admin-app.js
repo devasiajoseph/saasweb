@@ -35,7 +35,8 @@ app.directive('loader', function(scope, element, attributes){
     
 });
 
-function EditSiteCtrl($scope, $routeParams, $resource){
+function EditSiteCtrl($scope, $rootScope, $routeParams, $resource){
+    $rootScope.title = "Edit site";
     var siteData = $resource('/admin/site-data', {id:$routeParams.id});
     var sites = siteData.query(function(){
 	$scope.site = sites[0];
@@ -46,13 +47,15 @@ function EditSiteCtrl($scope, $routeParams, $resource){
     
 }
 
-function SiteListCtrl($scope, SiteListData){
+function SiteListCtrl($scope, $rootScope, SiteListData){
+    $rootScope.title = "My sites";
     console.log("site list")
     $scope.siteList  = SiteListData.query();
 }
 
 
-function PageCtrl($scope){
+function PageCtrl($scope, $rootScope){
+    $rootScope.title = "Welcome to your dashboard";
     $scope.hello = "Hello world";
     console.log("page ctrl");
 }
