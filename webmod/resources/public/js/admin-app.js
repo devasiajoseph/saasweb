@@ -74,11 +74,11 @@ function autoResize(id){
     var newheight;
     var newwidth;
 
-    if(document.getElementById){
-        newheight=window.innerHeight;
+    if(document.getElementById(id)){
+        newheight=document.getElementById(id).window.innerHeight;
         
     }
 
-    document.getElementById(id).height= (newheight-5) + "px";
+    document.getElementById(id).height= (newheight+200) + "px";
     
 }

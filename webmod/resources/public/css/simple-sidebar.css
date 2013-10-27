@@ -133,3 +133,5 @@
     margin: 0 auto;
     
 }
+
+ .restricted{width:200px; height:800px; overflow-y: hidden;}

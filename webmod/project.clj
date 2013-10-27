@@ -13,6 +13,7 @@
                  [clojurewerkz/cassaforte "1.2.0"]
                  [com.taoensso/carmine "2.2.0"]
                  [crypto-random "1.1.0"]
+                 [clojurewerkz/urly "1.0.0"]
                  [log4j
                   "1.2.15"
                   :exclusions
